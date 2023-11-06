@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+</div>
+<!-- partial -->
+<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>
+<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js'></script>
+<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js'></script>
+<script src="./script.js"></script>
+<div class="col-12 col text-center ">
+<h1 class="coutellerie ">COUTELLERIE ARTILLEUR80
+</h1>
+</div>
+
+<div class='caroussel_auto col-sm-12'>
+	<div class="contenu_carou_auto">
+		<div class="caroussel-image">
+			<img src="images/Buck-119B_01_buck-119b-hunting-special-d1.jpeg" alt>
+			<img src="images/pliant1.webp" alt>
+			<img src="images/arc.jpg" alt>
+			<img src="images/couteau-pliant-de-nontron-dans-le-perigord.jpg" alt>
+			<img src="images/merkur-34c-penche.jpg" alt>
+			<img src="images/coupe-choux-rasoir-droit-e1501772043847.jpg" alt>
+			<img src="images/41mQ+evAKBL._SS400_.jpg" alt>
+			<img src="images/hache-de-guerre-double-thorgrim-calimacil.jpg" alt>
+		</div>
+	</div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="container">
+<div class="row">
+<div class="col-12 text-center ">
+<h1>Categories</h1>
+</div>
+</div>
+</div>
+{% for categorie in categories %}
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center ">
+<div class="m-1 vignette"><a href="/categorie/{{ categorie.id }}">
+
+<div>
+
+	{# <div class="card border border-5 rounded"> #}
+		
+<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center ">
+			<img class="image3" src="/images/{{ categorie.image }} ">
+
+
+		</div>
+		</div>
+	</div>
+</div></a><div>
+{{ categorie.nom }}</div></div></div>{% endfor %}</div></div>
+
+<div class="container">
+		<div class="row">
+			<div class="col-12  text-center ">
+{# <div class="navigation">
+    {{ knp_pagination_render(categories) }}
+</div> #}
+</div>
+{% endblock %}

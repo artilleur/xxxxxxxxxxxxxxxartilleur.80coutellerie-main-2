@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommandeController!{% endblock %}
+
+{% block body %}
+
+<div class='container'>
+
+    Adresse livraison:
+  
+    
+   {{ form_start(form, {action:path('app_commande_add')}) }}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+     {{ form_widget(form)|replace({'[-br]' : '<br>'})|raw}}
+      {# {{ form_row(form.adr_rue)|replace({'[-br]' : '<br>'})|raw}} #}
+    {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+    <button type="submit" class="btn btn-primary">Valider la commande </button>
+{{ form_end(form) }}
+
+
+
+
+
+<table class="table";
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            {# <th>Action</th> #}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+
+
+
+
+                        {% for element in data %}
+                            <tr>
+                                <td>{{ element.product.nom }}</td>
+                                <td>{{ element.product.prix }} €</td>
+                                <td>{{ element.quantity }}</td>
+                                <td>{{ element.quantity * element.product.prix }} €</td>
+                                {# <td>
+                                    <a href="{{ path('cart_add', {id: element.product.id}) }}" class="btn btn-success">+</a>
+                                    <a href="{{ path('cart_remove', {id: element.product.id}) }}" class="btn btn-warning">-</a>
+                                    <a href="{{ path('cart_delete', {id: element.product.id}) }}" class="btn btn-danger">Supprimer</a>
+                                </td> #}
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Votre panier est vide</td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+
+                       
+
+                        <tr>
+                            <td colspan="3">sous Total</td>
+                            
+                            <td>{{ soustotal  }} €</td>
+                                <a href="{{ path('app_adresse_index' ) }}" class="btn btn-danger">modifier</a>
+                                
+                          </tr>
+                         <tr>
+                            <td colspan="3">tva</td>
+                            
+                            <td>{{ tva  }} %</td>
+                                
+                          </tr>
+
+                          <tr>
+                            <td colspan="3">totaltva</td>
+                            
+                            <td>{{ totaltva  }} €</td>
+                                
+                           </tr>
+                        <tr>
+                            <td colspan="3">frais de port</td>
+                            {% if soustotal<100 %}
+                            <td>{{ fdp }} €</td>
+                            
+                            {% endif %}
+
+                            {% if soustotal>100 %}
+                            <td> 0 €</td>
+                            
+                            {% endif %}
+                              </tr>
+
+
+
+                        <tr>
+                            
+                            
+                             <td colspan="3">Total</td>
+                            
+                            <td>{{ total }}
+                            </td>
+                                
+                            
+                        </tr>
+                    </tfoot>
+                </table>
+
+                
+                
+                 {# <a href="{{ path('app_commande_add') }}" class="btn btn-primary">Valider la commande</a>  #}
+                </div>
+{% endblock %}
+
+

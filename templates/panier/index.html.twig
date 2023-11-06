@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+			 {# <a href="{{ path('app_register') }}">Creation compte client</a>
+			 <br>
+			  <a href="{{ path('app_login') }}">login client</a> #}
+
+
+                <h1>Panier</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for element in data %}
+                            <tr>
+                                 
+                                <td>{{ element.product.nom }}</td>
+                                <td>{{ element.product.prix }} €</td>
+                                <td>{{ element.quantity }}</td>
+                                <td>{{ element.quantity * element.product.prix }} €</td>
+                                <td>
+                                    <a href="{{ path('cart_add', {id: element.product.id}) }}" class="btn btn-success">+</a>
+                                    <a href="{{ path('cart_remove', {id: element.product.id}) }}" class="btn btn-warning">-</a>
+                                    <a href="{{ path('cart_delete', {id: element.product.id}) }}" class="btn btn-danger">Supprimer</a>
+                                     
+                                    
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Votre panier est vide</td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Total</td>
+                            <td>{{ total  }} €</td>
+                            <td>
+                                <a href="{{ path('cart_empty') }}" class="btn btn-danger">Vider</a>
+                            </td>
+
+                            
+                        </tr>
+                    </tfoot>
+                </table>
+                <div>
+
+                 {# <a href="{{ path('app_commande_add') }}" class="btn btn-primary">Valider le panier</a>  #}
+                 <a href="{{ path('app_commande_index') }}" class="btn btn-primary">Valider le panier</a> 
+                 </div>
+                 <br>
+
+            
+
+            </div>
+
+             <div>
+             <a href="{{ path('app_home') }}" class="btn btn-primary">retour achat</a> 
+             </div>
+             <br>
+            
+            <div>
+            <a href="javascript:history.go(-1)"class="btn btn-primary">page precedente</a>
+            </div>
+
+
+
+        </section>
+    </main>
+{% endblock %}

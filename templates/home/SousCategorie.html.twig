@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+	{# <div class="card">
+		<div class="card-img">
+
+			<img
+			class="image5" src="{{ asset('images/nature2.jpg') }}"> #}
+
+		{# <div class="container">
+																		    <div class="row">
+																		     <div class="col-12 col-sm-4 col-md-8 col-lg-6 text-center ">
+																		 <div class="card-img-overlay"><h4 class="color" >Tout pour la chasse</h4><h4 class="color">Tout pour la pêche</h4><h4 class="color">Tout pour la randonnée</h4><h4 class="color" >Tout pour l'equitation</h4></div>
+																		 </div>
+																		        </div>
+																		        </div>
+																		</div> #}
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-8 col-md-4 col-lg-3 text-center ">
+				<h2>{{categorie.nom}}</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+
+
+			{% for sc in categorie.sousCategories %}
+
+				<div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center ">
+					<div>
+						<a href="/souscategorie/{{ sc.id }}">
+							<div class="h1">
+								{{ sc.nom }}
+								<br>
+								<img class="image3" src="/images/{{ sc.image }} ">
+
+							</div>
+						</a>
+					</div>
+				</div>
+
+
+			{% endfor %}
+
+		</div>
+	</div>
+{% endblock %}

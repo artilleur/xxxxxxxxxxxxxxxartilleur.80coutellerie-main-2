@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+     <div>
+			
+			<a href="{{ path('app_article_new') }}">Create new</a>
+			</div>
+
+	{# <img class="image5" src="{{ asset('images/deventure.webp') }}"> #}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-4 col-md-8 col-lg-6 text-center ">
+				<h1>{{sousCategorie.nom}}</h1>
+
+			</div>
+		</div>
+	</div>
+
+	{% for pr in sousCategorie.produits %}
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-12 col sm-3   text-center">
+					<div class="m-1 vignette">
+						<a href="/produit/{{ pr.id }}">
+							<div>
+								<div>
+									{{ pr.nom }}
+
+								</div>
+								<div>
+									<img class="image3" src="/images/{{ pr.image }}" width="180px" height="160px">
+									{{
+                            pr.prix
+                         }}€
+								</div>
+
+								<div></a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+			
+
+		</div>
+
+	{% endblock %}

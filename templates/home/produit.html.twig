@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	{# <img class="image5" src="{{ asset('images/nature4.jpeg') }}"> #}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12  text-center ">
+				<h1>{{produit.nom}}</h1>
+				<img class="imagebis" src="/images/{{ produit.image }}">
+				<p>{{produit.prix}}€</p>
+				<p>{{produit.description}}</p>
+				
+
+				<a href="{{ path('cart_add', {id:produit.id}) }}" class="btn btn-success">Ajouter au panier</a>
+				
+			</div>
+		{% endblock %}
